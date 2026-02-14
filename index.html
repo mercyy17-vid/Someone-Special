@@ -65,14 +65,25 @@ button:hover {
 
 .floating {
     position: fixed;
-    animation: floatUp 5s linear infinite;
+    bottom: -60px;
+    animation: floatUp linear forwards;
     pointer-events: none;
 }
 
 @keyframes floatUp {
-    0% { transform: translateY(100vh); opacity: 1; }
-    100% { transform: translateY(-100px); opacity: 0; }
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-120vh) scale(1.1);
+        opacity: 0;
+    }
 }
+
 </style>
 </head>
 
@@ -152,15 +163,45 @@ function yesClicked() {
     document.getElementById("response").innerHTML =
         "I know… haha 😌 You're stuck with me now. No escape 🦝💗";
 
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 30; i++) {
+
         let flower = document.createElement("div");
         flower.innerHTML = "🌷";
         flower.className = "floating";
+
+        // Random horizontal position
         flower.style.left = Math.random() * 100 + "vw";
+
+        // Random size (depth illusion)
+        let size = Math.random() * 40 + 20; // 20px–60px
+        flower.style.fontSize = size + "px";
+
+        // Smaller flowers slightly blurred (fake depth)
+        if (size < 35) {
+            flower.style.filter = "blur(1px)";
+            flower.style.opacity = 0.7;
+        } else {
+            flower.style.opacity = 1;
+        }
+
+        // Random rotation
+        flower.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+        // Random animation duration
+        flower.style.animationDuration = (Math.random() * 3 + 3) + "s"; // 3–6s
+
+        // Random delay
+        flower.style.animationDelay = (Math.random() * 2) + "s";
+
+        // Random layering
+        flower.style.zIndex = Math.floor(Math.random() * 10);
+
         document.body.appendChild(flower);
-        setTimeout(() => flower.remove(), 5000);
+
+        setTimeout(() => flower.remove(), 7000);
     }
 }
+
 
 let noMessages = [
     "Are you sure? 🥺",
@@ -190,6 +231,7 @@ function noClicked() {
 
 </body>
 </html>
+
 
 
 
