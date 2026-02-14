@@ -124,7 +124,7 @@ button:hover {
     <img class="gif" src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif">
     <h2>Will you be my forever Valentine? ❤️</h2>
     <button onclick="yesClicked()">YES 💍</button>
-    <button id="noBtn" onclick="moveButton()">NO 🙄</button>
+    <button id="noBtn" onclick="noClicked()">NO? 😏</button>
     <p id="response" style="margin-top:20px;font-size:1.2rem;"></p>
 </div>
 
@@ -160,15 +160,33 @@ function yesClicked() {
     }
 }
 
-function moveButton() {
-    let btn = document.getElementById("noBtn");
-    btn.style.position = "absolute";
-    btn.style.left = Math.random() * 80 + "vw";
-    btn.style.top = Math.random() * 80 + "vh";
+let noMessages = [
+    "Are you sure? 🥺",
+    "Think again, Missy 😌💗",
+    "Just press YES... it's safer 😇",
+    "You're testing my patience now 😤💕",
+    "Last chance... choose wisely 😈🌷",
+    "Okay now you're just being dramatic 😭🧸"
+];
+
+let noClickCount = 0;
+
+function noClicked() {
+    const btn = document.getElementById("noBtn");
+
+    if (noClickCount < noMessages.length) {
+        btn.innerText = noMessages[noClickCount];
+        noClickCount++;
+    } else {
+        noClickCount = 0;
+        btn.innerText = "NO? 😏";
+    }
 }
+
 
 </script>
 
 </body>
 </html>
+
 
