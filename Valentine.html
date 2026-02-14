@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Valentine's Day Jaanu ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ff6a88, #ff99ac);
+    text-align: center;
+    color: white;
+    overflow-x: hidden;
+}
+
+section {
+    padding: 80px 20px;
+}
+
+h1 {
+    font-size: 2.8rem;
+}
+
+h2 {
+    margin-top: 30px;
+}
+
+p {
+    font-size: 1.2rem;
+    max-width: 650px;
+    margin: 20px auto;
+    line-height: 1.6;
+}
+
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.3s;
+}
+
+.primary {
+    background: white;
+    color: #ff4d6d;
+}
+
+.secondary {
+    background: #ffffff40;
+    color: white;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+.hidden {
+    display: none;
+}
+
+.heart {
+    position: fixed;
+    animation: float 4s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-800px); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<section>
+    <h1>Happy Valentine's Day Jaanu ❤️</h1>
+    <p>
+        Today is officially the day of love.  
+        But honestly… loving you is my everyday thing.
+    </p>
+    <p>
+        So instead of a basic message, I built something.  
+        Because you deserve effort.
+    </p>
+    <button class="primary" onclick="nextSection()">Tap Here, My Valentine 😌</button>
+</section>
+
+<section id="part2" class="hidden">
+    <h1>Why I’m Grateful For You</h1>
+    <p>• You make my normal days feel special.</p>
+    <p>• Your smile is illegally powerful.</p>
+    <p>• You care deeply, even when you pretend you don’t.</p>
+    <p>• You believe in me more than I deserve sometimes.</p>
+    <p>• Life genuinely feels lighter with you.</p>
+    <button class="primary" onclick="nextSection2()">Wait… there’s more 👉</button>
+</section>
+
+<section id="part3" class="hidden">
+    <h1>My Valentine Wish For Us 💌</h1>
+    <p>
+        I hope we grow together.  
+        I hope we laugh more than we argue.  
+        I hope we always choose each other — even on difficult days.
+    </p>
+    <p>
+        I don’t need perfect moments.  
+        I just need real ones… with you.
+    </p>
+
+    <h2>Will you be my forever Valentine? ❤️</h2>
+
+    <button class="primary" onclick="yesClicked()">YES 💍</button>
+    <button class="secondary" id="noBtn" onmouseover="moveButton()">NO 🙄</button>
+
+    <p id="response" style="margin-top:30px;font-size:1.3rem;"></p>
+</section>
+
+<script>
+
+function nextSection() {
+    document.getElementById("part2").classList.remove("hidden");
+    window.scrollTo({ top: document.getElementById("part2").offsetTop, behavior: 'smooth' });
+    createHearts();
+}
+
+function nextSection2() {
+    document.getElementById("part3").classList.remove("hidden");
+    window.scrollTo({ top: document.getElementById("part3").offsetTop, behavior: 'smooth' });
+}
+
+function createHearts() {
+    for (let i = 0; i < 30; i++) {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = "100vh";
+        heart.style.fontSize = Math.random() * 20 + 20 + "px";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 4000);
+    }
+}
+
+function yesClicked() {
+    document.getElementById("response").innerHTML =
+        "You just made this the best Valentine's Day ever ❤️<br>Forever starts now.";
+    createHearts();
+}
+
+function moveButton() {
+    let btn = document.getElementById("noBtn");
+    btn.style.position = "absolute";
+    btn.style.left = Math.random() * 80 + "vw";
+    btn.style.top = Math.random() * 80 + "vh";
+}
+
+</script>
+
+</body>
+</html>
